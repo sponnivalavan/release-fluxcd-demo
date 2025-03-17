@@ -8,7 +8,9 @@ This repository demonstrates the usage of FluxCD for GitOps-based Kubernetes dep
 .
 ├── apps/                    # Application manifests
 │   └── base/               # Base configurations
-│       └── podinfo/        # Podinfo application
+│       ├── podinfo/        # Podinfo application (Git source)
+│       ├── capacitor/      # Capacitor application (OCI source)
+│       └── nginx/          # Nginx application (Helm source)
 ├── clusters/               # Cluster-specific configurations
 │   └── dev/               # Development cluster
 └── flux-system/           # FluxCD system configurations
@@ -22,32 +24,48 @@ This repository demonstrates the usage of FluxCD for GitOps-based Kubernetes dep
 
 ## Getting Started
 
-1. Clone this repository:
-   ```bash
-   git clone <your-repo-url>
-   cd <repo-name>
+1. Fork this repository on your profile
+
+2. Export environment variables:
+
+   ```
+   export GITHUB_USER=
+   export GITHUB_TOKEN=
    ```
 
-2. Bootstrap FluxCD in your cluster:
+3. Clone the forked repository:
+
+   ```bash
+   git clone https://github.com/${GITHUB_USER}/release-fluxcd-demo.git
+   cd release-fluxcd-demo
+   ```
+
+4. Bootstrap FluxCD in your cluster:
+
    ```bash
    flux bootstrap github \
-     --owner=<your-github-username> \
-     --repository=<your-repo-name> \
-     --branch=main \
-     --path=clusters/dev \
-     --personal
+    --owner=${GITHUB_USER} \
+    --repository=${GITHUB_REPO} \
+    --branch=main \
+    --personal \
+    --path=clusters/dev
    ```
 
-3. Verify the installation:
+5. Verify the installation:
    ```bash
-   flux get all
+   flux get all -A
    ```
 
 ## Applications
 
 ### Podinfo
-A simple demo application that shows various Kubernetes features. It's deployed in the `podinfo` namespace.
 
-## Contributing
+A simple demo application that shows various Kubernetes features. It's deployed in the `podinfo` namespace using GitRepository source and Kustomize deployment.
 
-Feel free to submit issues and enhancement requests!
+### Capacitor
+
+A demo application showcasing OCI (Open Container Initiative) OCIRepository integration. It's deployed in the `capacitor` namespace using OCIRepository and Kustomize deployment.
+
+### Nginx
+
+A web server application demonstrating Helm integration. It's deployed in the `nginx` using HelmRepository source and HelmRelease deployment.
