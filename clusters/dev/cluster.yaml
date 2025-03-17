@@ -1,0 +1,15 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: dev-cluster
+  namespace: flux-system
+spec:
+  interval: 10m
+  path: ./apps/base
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: dev-cluster
+  targetNamespace: flux-system
+  timeout: 2m
+  wait: true 
