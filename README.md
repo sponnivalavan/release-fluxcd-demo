@@ -45,7 +45,7 @@ This repository demonstrates the usage of FluxCD for GitOps-based Kubernetes dep
    ```bash
    flux bootstrap github \
     --owner=${GITHUB_USER} \
-    --repository=${GITHUB_REPO} \
+    --repository=release-fluxcd-demo \
     --branch=main \
     --personal \
     --path=clusters/dev
