@@ -6,7 +6,7 @@ metadata:
   name: fluxapp2
   namespace: podinfo
 spec:
-  interval: 2m0s
+  interval: 3m0s
   ref:
     branch: master
   url: https://github.com/stefanprodan/podinfo
