@@ -1,0 +1,12 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  annotations:
+    source-file: application4-GitRepository-resource.yaml
+  name: application4
+  namespace: podinfo
+spec:
+  interval: 3m0s
+  ref:
+    branch: master
+  url: https://github.com/stefanprodan/podinfo
