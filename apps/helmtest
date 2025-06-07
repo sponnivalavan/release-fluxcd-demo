@@ -10,5 +10,11 @@ spec:
     namespaceSelectors:
     - matchLabels:
         environment: flux-system
+  certSecretRef:
+    name: custom-ca-certificates
   interval: 1m0s
-  url: https://github.com/stefanprodan/podinfo
+  provider: generic
+  secretRef:
+    name: helm-repo-credentials
+  timeout: 1m0s
+  url: https://charts.bitnami.com/bitnami
