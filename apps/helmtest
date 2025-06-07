@@ -12,7 +12,5 @@ spec:
         environment: flux-system
   interval: 1m0s
   provider: generic
-  secretRef:
-    name: helm-repo-credentials
   timeout: 1m0s
   url: https://charts.bitnami.com/bitnami
