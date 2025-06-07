@@ -1,0 +1,14 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  annotations:
+    source-file: helmtest
+  name: helmsource
+  namespace: flux-system
+spec:
+  accessFrom:
+    namespaceSelectors:
+    - matchLabels:
+        environment: flux-system
+  interval: 1m0s
+  url: https://github.com/stefanprodan/podinfo
