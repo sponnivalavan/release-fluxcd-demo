@@ -1,28 +1,29 @@
-apiVersion: helm.toolkit.fluxcd.io/v2
-kind: HelmRelease
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: OCIRepository
 metadata:
   annotations:
     source-file: test
-  name: helmapp1
+  name: ocirepsource
   namespace: flux-system
 spec:
-  chart:
-    spec:
-      chart: postgresql
-      sourceRef:
-        kind: HelmRepository
-        name: helmsource
-        namespace: flux-system
-      version: 12.x
-  install: {}
-  interval: 1m0s
-  maxHistory: 10
-  releaseName: postgres-prod
-  rollback: {}
-  storageNamespace: flux-system
-  targetNamespace: flux-system
-  test: {}
-  timeout: 30s
-  uninstall: {}
-  upgrade: {}
-  values: {}
+  accessFrom:
+    namespaceSelectors:
+    - matchLabels:
+        environment: flux-system
+  certSecretRef:
+    name: registry-ca-certificates
+  interval: 5m
+  provider: generic
+  ref:
+    digest: sha256:1234abcd5678efgh9012ijkl3456mnop7890qrst
+    semver: '>=6.0.0 <7.0.0'
+    tag: latest
+  secretRef:
+    name: oci-registry-credentials
+  serviceAccountName: oci-puller-sa
+  timeout: 60s
+  url: oci://ghcr.io/stefanprodan/manifests/podinfo
+  verify:
+    provider: cosign
+    secretRef:
+      name: cosign-public-keys
