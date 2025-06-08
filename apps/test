@@ -16,8 +16,10 @@ spec:
       version: 12.x
   install: {}
   interval: 1m0s
+  maxHistory: 10
   releaseName: postgres-prod
   rollback: {}
+  storageNamespace: flux-system
   targetNamespace: flux-system
   timeout: 30s
   uninstall: {}
