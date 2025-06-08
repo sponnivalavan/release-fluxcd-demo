@@ -19,4 +19,5 @@ spec:
   releaseName: postgres-prod
   targetNamespace: flux-system
   timeout: 30s
+  upgrade: {}
   values: {}
