@@ -17,6 +17,7 @@ spec:
   install: {}
   interval: 1m0s
   releaseName: postgres-prod
+  rollback: {}
   targetNamespace: flux-system
   timeout: 30s
   upgrade: {}
