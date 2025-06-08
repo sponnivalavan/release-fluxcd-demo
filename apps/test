@@ -20,5 +20,6 @@ spec:
   rollback: {}
   targetNamespace: flux-system
   timeout: 30s
+  uninstall: {}
   upgrade: {}
   values: {}
