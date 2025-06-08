@@ -8,7 +8,7 @@ metadata:
 spec:
   chart:
     spec:
-      chart: bitnami-charts
+      chart: postgresql
       sourceRef:
         kind: HelmRepository
         name: helmsource
