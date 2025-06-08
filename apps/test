@@ -21,6 +21,7 @@ spec:
   rollback: {}
   storageNamespace: flux-system
   targetNamespace: flux-system
+  test: {}
   timeout: 30s
   uninstall: {}
   upgrade: {}
