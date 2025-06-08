@@ -1,9 +1,9 @@
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: OCIRepository
 metadata:
   annotations:
     source-file: test
-  name: tc2fluxcdhelmsource
+  name: tc3ocirepsource
   namespace: flux-system
 spec:
   accessFrom:
@@ -11,11 +11,19 @@ spec:
     - matchLabels:
         environment: flux-system
   certSecretRef:
-    name: custom-ca-certificates
-  interval: 1m0s
-  passCredentials: true
+    name: registry-ca-certificates
+  interval: 5m
   provider: generic
+  ref:
+    digest: sha256:1234abcd5678efgh9012ijkl3456mnop7890qrst
+    semver: '>=6.0.0 <7.0.0'
+    tag: latest
   secretRef:
-    name: helm-repo-credentials
-  timeout: 1m0s
-  url: https://charts.bitnami.com/bitnami
+    name: oci-registry-credentials
+  serviceAccountName: oci-puller-sa
+  timeout: 60s
+  url: oci://ghcr.io/stefanprodan/manifests/podinfo
+  verify:
+    provider: cosign
+    secretRef:
+      name: cosign-public-keys
