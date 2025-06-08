@@ -13,7 +13,7 @@ spec:
         kind: HelmRepository
         name: helmsource
         namespace: flux-system
-      version: '"12.x"'
+      version: 12.x
   interval: 1m0s
   targetNamespace: flux-system
   timeout: 30s
