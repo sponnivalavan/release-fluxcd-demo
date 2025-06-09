@@ -1,0 +1,27 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  annotations:
+    source-file: test
+  name: gitrepositorysource
+  namespace: flux-system
+spec:
+  ignore: /*
+  include:
+  - repository:
+      name: ""
+  interval: 1m0s
+  ref:
+    branch: master
+    commit: fb3b01be30a3f353b221365cd3b4f9484a0885ea
+    name: podinfo/commit/fb3b01be30a3f353b221365cd3b4f9484a0885ea
+    semver: '>=6.8.0 <6.9.0'
+    tag: 6.9.0
+  secretRef:
+    name: github-credentials
+  timeout: 1m0s
+  url: https://github.com/stefanprodan/podinfo
+  verify:
+    mode: head
+    secretRef:
+      name: gpg-public-keys
