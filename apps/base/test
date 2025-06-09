@@ -7,9 +7,6 @@ metadata:
   namespace: flux-system
 spec:
   ignore: /*
-  include:
-  - repository:
-      name: ""
   interval: 1m0s
   ref:
     branch: master
