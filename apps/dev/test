@@ -3,10 +3,10 @@ kind: GitRepository
 metadata:
   annotations:
     source-file: test
-  name: gitsource
-  namespace: podinfo
+  name: capgitsource
+  namespace: capacitor
 spec:
-  interval: 1m0s
+  interval: 2m0s
   ref:
     branch: master
   url: https://github.com/stefanprodan/podinfo
