@@ -1,0 +1,12 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  annotations:
+    source-file: fluxapp2-GitRepository-resource.yaml
+  name: fluxapp2
+  namespace: podinfo
+spec:
+  interval: 2m0s
+  ref:
+    branch: main
+  url: https://github.com/sponnivalavan/release-fluxcd-demo.git
